@@ -5,6 +5,7 @@ const methodOveride = require("method-override");
 const port = 8080;
 const Listing = require("./models/listing.js");
 const path = require("path");
+const ejsMate = require("ejs-mate");
 
 MONGO_URL = "mongodb://127.0.0.1:27017/Locasa";
 
@@ -22,8 +23,10 @@ main()
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOveride("_method"));
+app.engine("ejs", ejsMate);
 
 app.get("/", (req, res) => {
   res.send("Hi i am root");

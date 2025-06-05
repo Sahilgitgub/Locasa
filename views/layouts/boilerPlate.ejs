@@ -32,7 +32,9 @@
   </head>
   <body>
     <%- include("../includes/navbar.ejs") %>
-    <div class="container"><%- body %></div>
+    <div class="container">
+      <%- include("../includes/flash.ejs") %> <%- body %>
+    </div>
 
     <%- include("../includes/footer.ejs") %>
     <script
@@ -40,5 +42,8 @@
       integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
       crossorigin="anonymous"
     ></script>
+
+    <!-- this is to show alert if any field is not filled in the form. check script.js we added bootstrap form functions in it  required in the form is important to use this  -->
+    <script src="/js/script.js"></script>
   </body>
 </html>

@@ -1,0 +1,11 @@
+<h2>Search Results for "<%= query %>"</h2>
+
+<% if (listings.length === 0) { %>
+<p>No hotels found.</p>
+<% } else { %>
+<ul>
+  <% listings.forEach(listing => { %>
+  <li><a href="/listings/<%= listing._id %>"><%= listing.title %></a></li>
+  <% }) %>
+</ul>
+<% } %>

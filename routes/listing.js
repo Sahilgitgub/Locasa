@@ -28,6 +28,17 @@ router.get(
   wrapAsync(listingController.editListing)
 );
 
+// router.get("/listings/search", async (req, res) => {
+//   let query = req.query.q || ""; // fallback to empty string
+//   query = String(query).trim(); // ensure it's a string and remove extra spaces
+
+//   const listings = await Listing.find({
+//     title: { $regex: query, $options: "i" },
+//   });
+
+//   res.render("listings/searchResults", { listings, query });
+// });
+
 router
   .route("/:id")
   .put(

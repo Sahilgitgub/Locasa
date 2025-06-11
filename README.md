@@ -55,3 +55,15 @@ for ex-helloworld%?@ where %?@ is the salting and the hashed form of this exampl
 reverse lookup table can be use by the hackers to hack the passwords. reverse lookup table are like
 
 passport is used for authentication...
+
+we have use MVC model in this project full form-> models views controllers
+
+starablity is the rating styling that we use for star ratings.
+
+how to save upload image?
+
+1.form capable of sending files. 2.
+2.mongox third party service--> save file (this provide us the url link)
+3.save the link in mongo
+
+we have use geojason in mongoose to save the geo locations ,mapbox,mapbox github for accessing locations.

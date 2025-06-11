@@ -3,7 +3,7 @@
   <div class="col-8 offset-2">
     <br>
       <h3>Edit Page</h3><br>
-  <form method="POST" action="/listings/<%=listing._id%>?_method=PUT" novalidate class="needs-validation">
+  <form method="POST" action="/listings/<%=listing._id%>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
     <div class="mb-3">
       <label for="title" class="form-label">Title</label>
       <input
@@ -19,6 +19,25 @@
       </div>
     </div>
     <div class="mb-3">
+  <label for="category" class="form-label">Select Category</label>
+  <select name="listing[category]" class="form-select" required>
+    <option disabled selected value="">-- Select a Category --</option>
+    <option value="Mountains">Mountains</option>
+    <option value="Trending">Trending</option>
+    <option value="Rooms">Rooms</option>
+    <option value="Iconic cities">Iconic cities</option>
+    <option value="castles">Castles</option>
+    <option value="Amazing pools">Amazing pools</option>
+    <option value="Camping">Camping</option>
+    <option value="Farms">Farms</option>
+    <option value="Arctic">Arctic</option>
+    <option value="Amazing views">Amazing views</option>
+    <option value="surfing">Surfing</option>
+  </select>
+  <div class="invalid-feedback">Please select a valid category.</div>
+</div>
+
+    <div class="mb-3">
       <label for="description class="form-label">Description</label>
       <textarea name="listing[description]" cols="35" rows="5" class="form-control" required>
   <%=listing.description%></textarea
@@ -28,14 +47,17 @@
       </div>
     </div>
     
+<!-- <div class="mb-3">
+  <b>Original Image</b>
+      <img src="<%=originalImageUrl%>" alt="">
+    </div> -->
+
     <div class="mb-3">
-      <label for="image" class="form-label">Image Link/URL</label>
+      <label for="image" class="form-label">Upload New Image</label>
       <input
         name="listing[image]"
-        placeholder="enter image link/url"
-        value="<%=listing.image%>"
         class="form-control"
-        type="text"
+        type="file"
       />
     </div>
     <div class="row">

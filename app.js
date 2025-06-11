@@ -1,3 +1,8 @@
+if (process.env.NODE_ENV != "production") {
+  require("dotenv").config();
+}
+// console.log(process.env.SECRET);
+
 express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -9,7 +14,6 @@ const ExpressError = require("./utils/ExpressError.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
-
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
@@ -47,9 +51,6 @@ const sessionOptions = {
     httpOnly: true,
   },
 };
-app.get("/", (req, res) => {
-  res.send("Hi i am root");
-});
 
 app.use(session(sessionOptions));
 app.use(flash());

@@ -39,6 +39,8 @@ router.get(
 //   res.render("listings/searchResults", { listings, query });
 // });
 
+router.get("/search", wrapAsync(listingController.searchListings));
+
 router
   .route("/:id")
   .put(
@@ -51,5 +53,10 @@ router
   )
   .get(wrapAsync(listingController.showListing)) // Show route
   .delete(isLoggedIn, isOwner, wrapAsync(listingController.deleteListing)); // Delete route
+
+// const Listing = require("./models/listing"); // Adjust the path if necessary
+
+
+
 
 module.exports = router;

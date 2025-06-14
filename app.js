@@ -19,6 +19,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
+const listingRoutes = require("./routes/listing.js");
 
 MONGO_URL = "mongodb://127.0.0.1:27017/Locasa";
 const main = async () => {
@@ -78,6 +79,9 @@ app.use((err, req, res, next) => {
   res.render("./listings/eror.ejs", { message });
   // res.status(statusCode).send(message);
 });
+
+app.use("/listings", listingRoutes);
+
 app.listen(port, () => {
   console.log(`server is running on port ${port}`);
 });

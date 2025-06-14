@@ -42,10 +42,11 @@
       </ul>
     </div>
     <div class="navbar-nav ms-auto">
-      <form class="d-flex">
+      <form class="d-flex" action="/listings/search" method="GET">
         <input
           class="form-control me-2 search-inp"
           type="search"
+          name="query"
           placeholder="Search destinations"
         />
         <button class="btn btn-search" type="submit">

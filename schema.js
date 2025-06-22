@@ -1,5 +1,3 @@
-// To validate our schema it is an npm package .joi allows you to define a schema for your data.
-
 const joi = require("joi");
 
 module.exports.listingSchema = joi.object({

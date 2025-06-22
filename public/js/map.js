@@ -1,27 +1,3 @@
-// mapboxgl.accessToken = mapToken;
-// const map = new mapboxgl.Map({
-//   container: "map", // container ID
-//   center: coordinates, // starting position [lng, lat]. Note that lat must be set between -90 and 90
-//   zoom: 9, // starting zoom
-// });
-// console.log(coordinates);
-// const marker = new mapboxgl.Marker()
-//   .setLngLat(coordinates) //lisitng.geometry.coordinates
-//   .addTo(map);
-// var map = L.map("map").setView([38.7946, 106.5348], 13); // Delhi, India
-
-// // Load and display tile layers on the map (OpenStreetMap tiles)
-// L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-//   attribution: "© OpenStreetMap contributors",
-// }).addTo(map);
-
-// L.marker([38.7946, 106.5348])
-//   .addTo(map)
-//   .bindPopup("Welcome to Locasa")
-//   .openPopup();
-
-// public/js/map.js
-
 if (typeof locationString !== "undefined") {
   fetch(
     `https://nominatim.openstreetmap.org/search?format=json&q=${locationString}`

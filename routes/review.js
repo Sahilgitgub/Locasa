@@ -12,7 +12,6 @@ const Listing = require("../models/listing.js");
 const ReviewController = require("../controllers/review.js");
 //reviews
 //post route
-// hmme common part nikalna hota h isliye /listings/:id/review common tha dono routes m toh hmne / ka use krr lia
 router.post(
   "/",
   isLoggedIn,

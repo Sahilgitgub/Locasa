@@ -28,17 +28,6 @@ router.get(
   wrapAsync(listingController.editListing)
 );
 
-// router.get("/listings/search", async (req, res) => {
-//   let query = req.query.q || ""; // fallback to empty string
-//   query = String(query).trim(); // ensure it's a string and remove extra spaces
-
-//   const listings = await Listing.find({
-//     title: { $regex: query, $options: "i" },
-//   });
-
-//   res.render("listings/searchResults", { listings, query });
-// });
-
 router.get("/search", wrapAsync(listingController.searchListings));
 
 router
@@ -53,10 +42,4 @@ router
   )
   .get(wrapAsync(listingController.showListing)) // Show route
   .delete(isLoggedIn, isOwner, wrapAsync(listingController.deleteListing)); // Delete route
-
-// const Listing = require("./models/listing"); // Adjust the path if necessary
-
-
-
-
 module.exports = router;

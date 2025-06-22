@@ -35,7 +35,6 @@ module.exports.Login = async (req, res) => {
 
 module.exports.Logout = (req, res) => {
   req.logout((err) => {
-    //this is a bulit in function in passport.
     if (err) {
       return next(err);
     }

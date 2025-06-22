@@ -21,33 +21,7 @@ const listingSchema = new Schema({
     type: String,
     required: true,
   },
-  //   category: {
-  //     type: String,
-  //     enum: [
-  //       "Mountains",
-  //       "Trending",
-  //       "Rooms",
-  //       "Iconic cities",
-  //       "Castles",
-  //       "Amazing pools",
-  //       "Camping",
-  //       "Farms",
-  //       "Arctic",
-  //       "Amazing views",
-  //       "Surfing",
-  //     ],
-  //   },
-  //   geometry: {
-  //     type: {
-  //       type: String,
-  //       enum: ["Point"],
-  //       required: true,
-  //     },
-  //     coordinates: {
-  //       type: [Number], // [longitude, latitude]
-  //       required: true,
-  //     },
-  //   },
+  
   reviews: [
     {
       type: Schema.Types.ObjectId,

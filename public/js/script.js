@@ -1,6 +1,3 @@
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-// it was use in from validation
-
 (() => {
   "use strict";
 

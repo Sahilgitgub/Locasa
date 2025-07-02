@@ -88,11 +88,18 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
+// app.use((err, req, res, next) => {
+//   const { statusCode = 500, message = "Something went wrong!" } = err;
+//   res.render("./listings/eror.ejs", { message });
+//   // res.status(statusCode).send(message);
+// });
+
 app.use((err, req, res, next) => {
-  const { statusCode = 500, message = "Something went wrong!" } = err;
-  res.render("./listings/eror.ejs", { message });
-  res.status(statusCode).send(message);
+  const { statusCode = 500, message = "Something went wrong!" } = err;
+  res.status(statusCode).render("./listings/eror.ejs", { message });
 });
+
+
 
 app.use("/listings", listingRoutes);
 

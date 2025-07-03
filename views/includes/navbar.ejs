@@ -1,21 +1,20 @@
 <style>
+  /* Base styles */
   .btn-search {
     background-color: #fe424d;
     color: #fff;
     border-radius: 25px;
     padding: 0 1rem;
-    height: 38px; /* Match input height */
+    height: 38px;
+    transition: all 0.3s ease;
   }
   .btn-search:hover {
-    background-color: #fe424d;
-    color: #fff;
-  }
-  .btn-search i {
-    margin-right: 0.5rem;
+    background-color: #e63946;
   }
   .search-inp {
     border-radius: 25px;
     padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
   }
 
   /* Mobile layout */
@@ -24,50 +23,66 @@
       display: flex;
       width: 100%;
       align-items: center;
-      padding: 0.5rem 0;
+      padding: 0.5rem 1rem;
+      position: relative;
+      min-height: 60px;
     }
     
+    /* Logo on left */
+    .navbar-brand {
+      margin-right: auto;
+      font-size: 1.5rem;
+    }
+    
+    /* Centered search container */
     .mobile-search-container {
-      flex-grow: 1;
-      margin: 0 0.5rem;
-      display: flex !important;
-      align-items: center;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      max-width: 400px;
     }
     
     .mobile-search-form {
       display: flex;
       width: 100%;
-      gap: 0.5rem;
     }
     
     .mobile-search-inp {
       flex-grow: 1;
       padding: 0.5rem 1rem;
-      border-radius: 25px;
-      border: 1px solid #ddd;
-      min-width: 120px;
+      border-radius: 25px 0 0 25px;
     }
     
     .mobile-search-btn {
-      border-radius: 25px;
-      padding: 0 0.8rem;
-      white-space: nowrap;
+      border-radius: 0 25px 25px 0;
+      padding: 0 1rem;
+      background-color: #fe424d;
+      color: white;
+      border: none;
     }
     
+    /* Hamburger menu on right */
+    .navbar-toggler {
+      margin-left: auto;
+      border: none;
+    }
+    
+    /* Navbar collapse menu - appears below navbar */
     .navbar-collapse {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
       background-color: white;
       padding: 1rem;
       border-radius: 0 0 10px 10px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      margin-top: 0;
+      z-index: 1000;
     }
     
     .desktop-search {
       display: none;
-    }
-    
-    .navbar-toggler {
-      margin-left: 0.5rem;
     }
   }
 
@@ -77,37 +92,51 @@
       display: none !important;
     }
     
+    .navbar-container {
+      flex-wrap: nowrap;
+    }
+    
     .desktop-search {
       display: flex;
+      flex-grow: 1;
+      max-width: 600px;
+      margin: 0 2rem;
+    }
+    
+    .navbar-collapse {
+      position: static;
+      box-shadow: none;
     }
     
     .btn-search {
-      width: 170px;
-      border-radius: 2px solid black !important ;
+      min-width: 120px;
     }
   }
 </style>
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid navbar-container">
+    <!-- Logo on left -->
     <a class="navbar-brand" href="/listings">
       <i class="fa-solid fa-compass-drafting"></i>
     </a>
     
-    <!-- Mobile Search (visible only on mobile) -->
+    <!-- Centered mobile search -->
     <div class="mobile-search-container">
       <form class="mobile-search-form" action="/listings/search" method="GET">
         <input class="form-control mobile-search-inp" type="search" name="query" placeholder="Search...">
-        <button class="btn btn-primary mobile-search-btn" type="submit" style="background-color: #fe424d;">
+        <button class="btn mobile-search-btn" type="submit">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
       </form>
     </div>
     
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <!-- Hamburger menu on right -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-expanded="false" aria-controls="navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
     
+    <!-- Collapsible content -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
@@ -115,9 +144,9 @@
         </li>
       </ul>
       
-      <!-- Desktop Search (visible only on desktop) -->
+      <!-- Desktop search -->
       <div class="desktop-search">
-        <form class="d-flex" action="/listings/search" method="GET">
+        <form class="d-flex w-100" action="/listings/search" method="GET">
           <input class="form-control me-2 search-inp" type="search" name="query" placeholder="Search destinations">
           <button class="btn btn-search" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i> Search

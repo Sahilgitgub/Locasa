@@ -67,3 +67,9 @@ how to save upload image?
 3.save the link in mongo
 
 we have use geojason in mongoose to save the geo locations ,mapbox,mapbox github for accessing locations.
+
+
+MONGO_URL = process.env.ATLASDB_URL;
+const main = async () => {
+  await mongoose.connect(MONGO_URL);
+};

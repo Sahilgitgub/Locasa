@@ -1,40 +1,131 @@
 <% layout("/layouts/boilerPlate.ejs") %>
 
 <style>
+  body {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
   .listing-card {
     width: 100%;
     height: 450px;
+    margin-bottom: 1.5rem;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out;
     display: flex;
     flex-direction: column;
+    background: #fff;
+    border-radius: 10px;
   }
-
   .listing-card:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
   }
-
   .listing-img {
     height: 250px;
     object-fit: cover;
     width: 100%;
   }
-
   .card-body {
     flex-grow: 1;
     padding: 1.2rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
   }
-
   .card-title {
     font-size: 1.25rem;
     font-weight: 600;
+    margin-bottom: 0.5rem;
   }
-
   .card-text {
     color: #555;
     font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    flex-grow: 1;
+  }
+  .btn {
+    margin-top: auto;
+  }
+
+  /* Medium devices (tablets, less than 992px) */
+  @media (max-width: 992px) {
+    .listing-card {
+      height: 400px;
+    }
+    .listing-img {
+      height: 200px;
+    }
+    .card-title {
+      font-size: 1.15rem;
+    }
+    .card-text {
+      font-size: 0.9rem;
+    }
+  }
+
+  /* Small devices (phones, less than 768px) */
+  @media (max-width: 768px) {
+    .col-md-4 {
+      max-width: 350px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .listing-card {
+      height: 380px;
+    }
+    .listing-img {
+      height: 180px;
+    }
+    .card-body {
+      padding: 1rem;
+    }
+    .card-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+    .card-text {
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  /* Extra small devices (small phones, less than 576px) */
+  @media (max-width: 576px) {
+    .container {
+      padding: 0 12px;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+    .col-md-4 {
+      padding: 0;
+      width: 100%;
+    }
+    .listing-card, .card {
+      height: auto !important;
+      min-height: 320px;
+    }
+    .listing-img {
+      height: 150px;
+    }
+    .card-body {
+      padding: 0.8rem;
+    }
+    .card-title {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+    .card-text {
+      font-size: 0.8rem;
+    }
+    .btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+    }
   }
 </style>
 
@@ -42,35 +133,24 @@
   <h2 class="mb-4">Results for "<%= searchQuery %>"</h2>
 
   <% if (results.length === 0) { %>
-  <p class="text-muted">No listings found for your search.</p>
+    <p class="text-muted">No listings found for your search.</p>
   <% } else { %>
-  <div class="row">
-    <% results.forEach(result => { %>
-    <div class="col-md-4 mb-4">
-      <div class="card listing-card">
-        <% if (result.image && result.image.url) { %>
-        <img
-          src="<%= result.image.url %>"
-          class="card-img-top listing-img"
-          alt="<%= result.title %>"
-        />
-        <% } %>
-        <div class="card-body">
-          <h5 class="card-title"><%= result.title %></h5>
-
-          <p class="card-text">
-            <%= result.description.substring(0, 100) %>...
-          </p>
-
-          <p class="card-text"><strong>₹<%= result.price %></strong></p>
-
-          <a href="/listings/<%= result._id %>" class="btn btn-outline-primary"
-            >View Listing</a
-          >
+    <div class="row">
+      <% results.forEach(result => { %>
+        <div class="col-md-4 mb-4">
+          <div class="card listing-card">
+            <% if (result.image && result.image.url) { %>
+              <img src="<%= result.image.url %>" class="card-img-top listing-img" alt="<%= result.title %>" />
+            <% } %>
+            <div class="card-body">
+              <h5 class="card-title"><%= result.title %></h5>
+              <p class="card-text"><%= result.description.substring(0, 100) %>...</p>
+              <p class="card-text"><strong>₹<%= result.price %></strong></p>
+              <a href="/listings/<%= result._id %>" class="btn btn-outline-primary">View Listing</a>
+            </div>
+          </div>
         </div>
-      </div>
+      <% }) %>
     </div>
-    <% }) %>
-  </div>
   <% } %>
 </div>
